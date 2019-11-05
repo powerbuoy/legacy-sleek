@@ -1,0 +1,107 @@
+// Prevent scroll when menu is open
+html.hash-active.hash-active-header {
+	overflow: hidden;
+}
+
+#header {
+	@include section;
+
+	background: $white;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	position: sticky;
+	top: 0;
+	z-index: 99;
+
+	padding-top: 0;
+	padding-bottom: 0;
+
+	box-shadow: shadow(1);
+
+	a {
+		color: inherit;
+	}
+
+	// Logo
+	.site-logo {
+		// See site-logo.scss
+	}
+
+	.tagline {
+		@include a11y-hide;
+	}
+
+	// Nav
+	nav {
+		// TODO: Search
+		.widget_search {
+			display: none;
+		}
+	}
+
+	// In low res
+	@media #{breakpoint(laptop-max)} {
+		nav {
+			background: $white;
+
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			height: 100%;
+			z-index: 99;
+
+			padding: 6rem $site-padding $spacing-large;
+			overflow: auto;
+
+			transform: translateX(100%);
+			transition: transform $transition-default $transition-easing;
+
+			div > ul {
+				> li {
+					display: block;
+					margin: 0 0 $spacing-default;
+				}
+			}
+		}
+	}
+
+	// In high res
+	@media #{breakpoint(laptop)} {
+		nav {
+			div > ul {
+				@include dropdown-menu;
+
+				> li {
+					margin-right: 0;
+					margin-left: $spacing-default;
+				}
+			}
+		}
+	}
+
+	// Menu toggle
+	.menu-toggle {
+		@include burger-menu($text-color);
+
+		z-index: 100;
+
+		@media #{breakpoint(laptop)} {
+			display: none;
+		}
+	}
+
+	// When menu is open
+	&:target {
+		nav {
+			transform: translateX(0);
+		}
+
+		.menu-toggle {
+			@include burger-menu-open($text-color);
+		}
+	}
+}

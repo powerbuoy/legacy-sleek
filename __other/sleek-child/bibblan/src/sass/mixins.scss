@@ -1,0 +1,236 @@
+////////////////////
+// Animate underline
+@mixin animated-underline ($color: $link-color) {
+	position: relative;
+
+	&:after {
+		background: $color;
+
+		display: block;
+		content: "";
+
+		width: 0%;
+		height: .25rem;
+
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+
+		transform: translateX(-50%);
+		transition: width $transition-default $transition-easing;
+	}
+
+	&:hover,
+	&.active {
+		@include animated-underline-active;
+	}
+}
+
+@mixin animated-underline-active {
+	&:after {
+		width: 100%;
+	}
+}
+
+////////////////
+// Dropdown menu
+@mixin dropdown-menu {
+	margin: 0;
+	list-style: none;
+
+	> li {
+		display: inline-block;
+		margin-right: $spacing-default;
+		position: relative;
+
+		> a {
+			@include animated-underline($link-color);
+
+			display: inline-block;
+			padding: $spacing-default 0;
+			color: inherit;
+		}
+
+		&.active,
+		&.active-ancestor,
+		&.active-parent,
+		&.current-cat,
+		&:hover {
+			> a {
+				@include animated-underline-active;
+			}
+		}
+
+		// Sub menu
+		> ul {
+			@include arrow(top, 8px, $white, 0, $white, 50%);
+
+			background: $white;
+
+			margin: 0;
+			list-style: none;
+
+			position: absolute;
+			left: 50%;
+			top: calc(100% + 16px);
+			z-index: 99;
+
+			transform: translateX(-50%) scaleY(0);
+			transform-origin: 50% top;
+			transition: transform $transition-default $transition-default $transition-easing;
+
+			border-radius: .25rem;
+			box-shadow: shadow(1);
+
+			> li {
+				display: block;
+				position: relative;
+
+				&:not(:last-child) {
+					border-bottom: 1px solid $border-color;
+				}
+
+				> a {
+					display: block;
+					padding: $spacing-small;
+					white-space: nowrap;
+					color: $text-color;
+
+					&:hover {
+						color: $link-color;
+					}
+				}
+
+				// Sub-sub menu
+				> ul {
+					@include arrow(left, 8px, $white, 0, $white, 24px);
+
+					background: $white;
+
+					margin: 0;
+					list-style: none;
+
+					position: absolute;
+					left: calc(100% + 16px);
+					top: 0;
+
+					transform: scaleX(0);
+					transform-origin: left top;
+					transition: transform $transition-default $transition-default $transition-easing;
+
+					font-size: $font-size-small;
+
+					border-radius: .25rem;
+					box-shadow: shadow(1);
+
+					> li {
+						display: block;
+
+						&:not(:last-child) {
+							border-bottom: 1px solid $border-color;
+						}
+
+						> a {
+							display: block;
+							padding: $spacing-small;
+							white-space: nowrap;
+							color: $text-color;
+
+							&:hover {
+								color: $link-color;
+							}
+						}
+					}
+				}
+
+				&:hover > ul {
+					transform: scaleX(1);
+				}
+			}
+		}
+
+		&:hover > ul {
+			transform: translateX(-50%) scaleY(1);
+		}
+	}
+}
+
+///////////////////
+// Header and cards
+@mixin header-and-cards {
+	@include container;
+
+	article {
+		background: $white;
+
+		margin: 0 0 $spacing-large;
+		padding: $spacing-default;
+
+		box-shadow: shadow(1);
+
+		figure {
+			margin: -$spacing-default;
+			margin-bottom: $spacing-default;
+			overflow: hidden;
+
+			img {
+				display: block;
+				width: 100%;
+				transform: scale(1);
+				transition: transform $transition-default $transition-easing;
+
+				&:hover {
+					transform: scale(1.05);
+				}
+			}
+		}
+
+		header {
+			h2,
+			h3 {
+				font-size: $font-size-h3;
+			}
+
+			p {
+				@include separated-list;
+
+				font-size: $font-size-small;
+				text-transform: uppercase;
+				color: color(gray);
+
+				> *:after {
+					color: $border-color;
+				}
+			}
+		}
+
+		> a:last-child {
+			@include button;
+		}
+	}
+
+	@media #{breakpoint(tablet)} {
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		> header {
+			@include flex-width(100%);
+		}
+
+		article {
+			@include flex-width(50%, $grid-gap);
+
+			// NOTE: This is to bottom align any potential buttons
+		/*	display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			flex-direction: column;
+
+			> a:last-child {
+				margin-top: auto;
+			} */
+		}
+	}
+}

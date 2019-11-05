@@ -1,0 +1,25 @@
+#four-o-four {
+	@include container($site-width);
+
+	> aside {
+		> section {
+			@media #{breakpoint(laptop)} {
+				@include flex-grid(3, $grid-gap);
+
+				&::before,
+				&::after {
+					@include flex-grid-item(3, $grid-gap);
+
+					display: block;
+					content: "";
+					margin: 0;
+					order: 9999;
+				}
+
+				> h3 {
+					min-width: 100%;
+				}
+			}
+		}
+	}
+}

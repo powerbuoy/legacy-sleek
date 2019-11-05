@@ -1,0 +1,23 @@
+// Icons (generated)
+@import "icon-vars";
+@import "icons";
+
+// Our SleekCSS config
+@import "config";
+
+// Third party
+@import "../../node_modules/normalize-css/normalize";
+@import "../../node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import "../../node_modules/sleek-css/sleek-css.scss";
+
+// Our stuff
+@import "components/*";
+@import "modules/*";
+@import "../../acf/**/*.scss";
+
+// TEMP!
+#header,
+#footer,
+main > * {
+	@include container;
+}

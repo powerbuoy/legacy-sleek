@@ -1,0 +1,15 @@
+#breadcrumbs {
+	@include section;
+
+	background: color(lightgray);
+
+	padding-top: $spacing-small;
+	padding-bottom: $spacing-small;
+
+	font-size: $font-size-small;
+	color: color(gray);
+
+	#front-page & {
+		display: none;
+	}
+}

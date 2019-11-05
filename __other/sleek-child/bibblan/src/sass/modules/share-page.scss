@@ -1,0 +1,24 @@
+#share-page {
+	@include container;
+
+	ul {
+		@include auto-icons;
+
+		margin-left: 0;
+		list-style: none;
+
+		li {
+			display: inline-block;
+			margin: 0 $spacing-default 0 0;
+		}
+
+		a {
+			font-size: 0;
+
+			&:before {
+				font-size: $font-size-x-large;
+				margin: 0;
+			}
+		}
+	}
+}

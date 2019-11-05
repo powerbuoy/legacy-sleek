@@ -1,0 +1,22 @@
+#archive-taxonomies {
+	@include section;
+
+	background: $white;
+
+	padding-top: 0;
+	padding-bottom: 0;
+
+	font-size: $font-size-small;
+	text-transform: uppercase;
+
+	box-shadow: shadow(1);
+
+	h2,
+	h3 {
+		@include a11y-hide;
+	}
+
+	nav > ul {
+		@include dropdown-menu;
+	}
+}

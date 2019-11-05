@@ -1,0 +1,83 @@
+#gallery {
+	> header {
+		@include container;
+
+		margin-bottom: 0;
+	}
+
+	ul {
+		margin: 0;
+		list-style: none;
+
+		display: flex;
+		align-items: stretch;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		> * {
+			overflow: hidden;
+			flex: 0 0 50%;
+			width: 50%;
+
+			@media #{breakpoint(tablet)} {
+				flex: 0 0 25%;
+				width: 25%;
+			}
+		}
+
+		figure {
+			display: block;
+			margin: 0;
+			position: relative;
+			overflow: hidden;
+
+			img {
+				display: block;
+				transform: scale(1);
+				transition: transform $transition-default $transition-easing;
+			}
+
+			figcaption {
+				background: $overlay-color;
+
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				padding: $spacing-default;
+
+				color: $white;
+				font-style: normal;
+				text-align: left;
+
+				transform: translateY(100%);
+				transition: transform $transition-default $transition-easing;
+
+				h3 {
+					@include text;
+
+					margin: 0 0 $spacing-small;
+					color: $white;
+
+					&:last-child {
+						margin: 0;
+					}
+				}
+
+				p {
+					margin: 0;
+				}
+			}
+
+			&:hover {
+				img {
+					transform: scale(1.1);
+				}
+
+				figcaption {
+					transform: translateY(0);
+				}
+			}
+		}
+	}
+}

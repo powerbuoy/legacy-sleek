@@ -1,0 +1,55 @@
+// Icons (generated)
+@import "icon-vars";
+@import "icons";
+
+// Our SleekCSS config
+@import "config";
+
+// Third party
+@import "../../node_modules/normalize-css/normalize";
+@import "../../node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import "../../node_modules/sleek-css/sleek-css.scss";
+
+// Our stuff
+@import "mixins";
+@import "components/*";
+@import "modules/*";
+@import "../../acf/**/*.scss";
+
+// Shrink everything slightly in low res
+html {
+	@media #{breakpoint(tablet-max)} {
+		font-size: 80%;
+	}
+}
+
+// Make basically everything a container
+#four-o-four,
+nav.pagination,
+#video,
+#comments,
+#post-comment,
+#contact-form {
+	@include container;
+}
+
+nav.pagination {
+	text-align: center;
+}
+
+// Or a hero
+#archive-header {
+	@include hero;
+
+	text-shadow: .1rem .1rem .1rem rgba(0, 0, 0, .2);
+}
+
+// Or cards in cols
+#child-pages,
+#featured-posts,
+#latest-posts,
+#posts,
+#text-blocks,
+#users {
+	@include header-and-cards;
+}

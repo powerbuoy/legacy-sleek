@@ -1,0 +1,94 @@
+/***
+    title: Slideshow
+    section: Widgets
+    description: Styling for the slideshow.
+    example:
+        <div data-slideshow="3">
+            <div>Slide 1</div>
+            <div>Slide 2</div>
+            <div>Slide 3</div>
+            <div>Slide 4</div>
+            <div>Slide 5</div>
+            <div>Slide 6</div>
+        </div>
+***/
+.slideshow-pages {
+	margin: $spacing-default 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+	a {
+		background: rgba($overlay-color, .4);
+		display: block;
+		width: .75rem;
+		height: .75rem;
+		margin: 0 ($spacing-small / 2);
+		font-size: 0;
+		border-radius: 50%;
+
+		&.active,
+		&.glide__bullet--active {
+			background: rgba($overlay-color, .8);
+		}
+	}
+}
+
+a.slideshow-prev,
+a.slideshow-next {
+	position: absolute;
+	top: 50%;
+	z-index: 97;
+	transform: translateY(-50%);
+	font-size: 0;
+	color: $text-color;
+
+	&:before {
+		@include icon;
+
+		font-size: 2rem;
+		line-height: 1;
+		margin: 0;
+	}
+
+	@media #{breakpoint(tablet-max)} {
+		display: none !important;
+	}
+}
+
+a.slideshow-prev {
+	left: 0;
+
+	&:before {
+		content: $icon-left;
+	}
+}
+
+a.slideshow-next {
+	right: 0;
+
+	&:before {
+		content: $icon-right;
+	}
+}
+
+// White version
+.slideshow--white {
+	.slideshow-next,
+	.slideshow-prev {
+		color: $white;
+	}
+
+	.slideshow-pages {
+		a {
+			background: transparent;
+			border: 1px solid $white;
+
+			&.active,
+			&.glide__bullet--active {
+				background: $white;
+			}
+		}
+	}
+}

@@ -1,0 +1,61 @@
+#page {
+	> header {
+		@include hero;
+
+		text-shadow: .1rem .1rem .1rem rgba(0, 0, 0, .2);
+
+		// Hide featured image in high res if a video hero is used
+		@media #{breakpoint(laptop)} {
+			div.video-hero + figure {
+				display: none;
+			}
+		}
+	}
+
+	// Page without right col
+	> article {
+		@include container($site-width * .75);
+	}
+
+	// Right col
+	> div > aside {
+		> * {
+			margin-bottom: $spacing-large;
+		}
+
+		h2 {
+			font-size: $font-size-h4;
+			margin: 0 0 $spacing-small;
+		}
+
+		p {
+			margin: 0 0 $spacing-small;
+		}
+	}
+
+	// If the page has modules to the right, a div wraps the article and aside
+	> div {
+		@include container;
+
+		// Display them in columns in high res
+		@media #{breakpoint(tablet)} {
+			display: flex;
+			align-items: stretch;
+			justify-content: space-between;
+
+			> article {
+				flex: 0 0 70%;
+			}
+
+			> aside {
+				flex: 0 0 25%;
+			}
+		}
+	}
+
+	// Page content (regardless if two cols)
+	> article,
+	> div > article {
+		@include post-content;
+	}
+}
