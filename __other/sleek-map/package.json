@@ -1,0 +1,19 @@
+{
+  "name": "sleek-map",
+  "version": "1.0.0",
+  "description": "A wrapper class for Google Maps",
+  "main": "sleek-map.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerbuoy/sleek-map.git"
+  },
+  "author": "Andreas Lagerkvist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/powerbuoy/sleek-map/issues"
+  },
+  "homepage": "https://github.com/powerbuoy/sleek-map#readme"
+}
