@@ -1,0 +1,22 @@
+{
+  "name": "scroll-stats",
+  "version": "1.0.0",
+  "description": "Adds a bunch of classes representing the user's scroll behaviour like 'has-scrolled', 'scrolling-down' etc",
+  "main": "scroll-stats.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/powerbuoy/scroll-stats.git"
+  },
+  "author": "Andreas Lagerkvist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/powerbuoy/scroll-stats/issues"
+  },
+  "homepage": "https://github.com/powerbuoy/scroll-stats#readme",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
